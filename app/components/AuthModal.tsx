@@ -1,9 +1,12 @@
-'use client';
+'use client'; // using global context requires to use client components!!
 
-import { useState } from 'react';
+import { useEffect, useState, useContext } from 'react';
 import Box from '@mui/material/Box';
 import Modal from '@mui/material/Modal';
 import AuthModalInput from './AuthModalInput';
+import { AuthenticationContext } from '../context/AuthContext';
+import useAuth from '../../hooks/useAuth';
+import { Alert, CircularProgress } from '@mui/material';
 
 const style = {
 	position: 'absolute' as 'absolute',
@@ -21,6 +24,8 @@ const AuthModal = ({ isSignin }: { isSignin: boolean }) => {
 	const [open, setOpen] = useState(false);
 	const handleOpen = () => setOpen(true);
 	const handleClose = () => setOpen(false);
+	const { signin, signup } = useAuth();
+	const { loading, error, data } = useContext(AuthenticationContext);
 
 	const [inputs, setInputs] = useState({
 		firstName: '',
@@ -30,6 +35,36 @@ const AuthModal = ({ isSignin }: { isSignin: boolean }) => {
 		city: '',
 		password: '',
 	});
+
+	const [disabled, setDisabled] = useState(true);
+
+	useEffect(() => {
+		if (isSignin) {
+			if (inputs.password && inputs.email) {
+				return setDisabled(false);
+			}
+		} else {
+			if (
+				inputs.firstName &&
+				inputs.lastName &&
+				inputs.email &&
+				inputs.password &&
+				inputs.city &&
+				inputs.phone
+			) {
+				return setDisabled(false);
+			}
+		}
+		setDisabled(true);
+	}, [inputs]);
+
+	const handleClick = () => {
+		if (isSignin) {
+			signin({ email: inputs.email, password: inputs.password }, handleClose);
+		} else {
+			signup(inputs, handleClose);
+		}
+	};
 
 	const renderContent = (signinContent: string, signupContent: string) => {
 		return isSignin ? signinContent : signupContent;
@@ -59,29 +94,43 @@ const AuthModal = ({ isSignin }: { isSignin: boolean }) => {
 				aria-labelledby='modal-modal-title'
 				aria-describedby='modal-modal-description'>
 				<Box sx={style}>
-					<div className='p-2 h-[600px]'>
-						<div className='uppcase font-bold text-center pb-2 border-b mb-2'>
-							<p className='text-sm'>
-								{renderContent('Sign in', 'Create account')}
-							</p>
+					{loading ? (
+						<div className='py-24 h-[600px] flex justify-center'>
+							<CircularProgress />
 						</div>
-						<div className='m-auto'>
-							<h2 className='text-2xl font-light text-center'>
-								{renderContent(
-									'Log Into Your Account',
-									'Create Your OpenTable Account'
-								)}
-							</h2>
-							<AuthModalInput
-								inputs={inputs}
-								handleChangeInput={handleChangeInput}
-								isSignin={isSignin}
-							/>
-							<button className='uppercase bg-red-600 w-full text-white p-3 rounded text-sm mb-5 disabled:bg-gray-400'>
-								{renderContent('Sign in', 'Create account')}
-							</button>
+					) : (
+						<div className='p-2 h-[600px]'>
+							{error && (
+								<Alert severity='error' className='mb-4'>
+									{error}
+								</Alert>
+							)}
+							<div className='uppcase font-bold text-center pb-2 border-b mb-2'>
+								<p className='text-sm'>
+									{renderContent('Sign in', 'Create account')}
+								</p>
+							</div>
+							<div className='m-auto'>
+								<h2 className='text-2xl font-light text-center'>
+									{renderContent(
+										'Log Into Your Account',
+										'Create Your OpenTable Account'
+									)}
+								</h2>
+								<AuthModalInput
+									inputs={inputs}
+									handleChangeInput={handleChangeInput}
+									isSignin={isSignin}
+								/>
+								<button
+									className='uppercase bg-red-600 w-full text-white p-3 rounded text-sm mb-5 disabled:bg-gray-400'
+									disabled={disabled}
+									onClick={handleClick}>
+									{renderContent('Sign in', 'Create account')}
+								</button>
+							</div>
 						</div>
-					</div>
+					)}
 				</Box>
 			</Modal>
 		</div>

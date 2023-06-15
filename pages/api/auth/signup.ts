@@ -3,6 +3,7 @@ import validator from 'validator';
 import { PrismaClient } from '@prisma/client';
 import bcrypt from 'bcrypt';
 import * as jose from 'jose'; // jose to create a manufactured JWT (avoid issues with SSR apps, avoid JWT here)
+import { setCookie } from 'cookies-next';
 
 const prisma = new PrismaClient();
 
@@ -87,8 +88,15 @@ export default async function handler(
 			.setExpirationTime('24h')
 			.sign(secret);
 
+		// set cookie for the client to save it into their browser, eg. in local/ session storage or cookie
+		setCookie('jwt', token, { req, res, maxAge: 60 * 6 * 24 }); // key: jwt, value: token and age of cookie, eg. 60sec, 6d, 24hrs
+
 		return res.status(200).json({
-			token,
+			firstName: user.first_name,
+			lastName: user.last_name,
+			email: user.email,
+			phone: user.phone,
+			city: user.city,
 		});
 	}
 

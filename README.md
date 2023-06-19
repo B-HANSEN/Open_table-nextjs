@@ -45,3 +45,9 @@ Prisma to communicate with a PostgreSQL database on supabase.com.
 
 To start the application, install packages with `npm install` and then run `npm run dev`.
 The app will be running on http://localhost:3000/.
+
+### Pending bug
+
+In the restaurant card, the reservation is made correctly in the database when saved.
+When new reservations to be made, the time slot always shows available even when the seat capacity might be consumed.
+Work-around: show non-available capacities by adding 30mins to the 'Time' drop-down menu.

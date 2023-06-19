@@ -1,3 +1,6 @@
+'use client';
+
+import { useEffect, useState } from 'react';
 import NavBar from './components/NavBar';
 import AuthContext from './context/AuthContext';
 import './globals.css';
@@ -8,6 +11,20 @@ export default function RootLayout({
 }: {
 	children: React.ReactNode;
 }) {
+	const [mounted, setMounted] = useState(false); // avoid wakeable.then error: work with useEffect for checking if it's mounted on the client
+
+	useEffect(() => {
+		setMounted(true);
+	}, []);
+
+	if (!mounted)
+		return (
+			<html>
+				<head />
+				<body></body>
+			</html>
+		);
+
 	return (
 		<html lang='en'>
 			{/*

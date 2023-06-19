@@ -14,17 +14,17 @@ export default function SearchSidebar({
 	const prices = [
 		{
 			price: PRICE.CHEAP,
-			label: '$',
+			label: '$$',
 			className: 'border w-full text-reg text-center font-light rounded-l p-2',
 		},
 		{
 			price: PRICE.REGULAR,
-			label: '$$',
+			label: '$$$',
 			className: 'border w-full text-reg text-center font-light p-2',
 		},
 		{
 			price: PRICE.EXPENSIVE,
-			label: '$$$',
+			label: '$$$$',
 			className: 'border w-full text-reg text-center font-light rounded-r p-2',
 		},
 	];

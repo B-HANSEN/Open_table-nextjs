@@ -1,36 +1,47 @@
-This is a [Next.js](https://nextjs.org/) project bootstrapped with [`create-next-app`](https://github.com/vercel/next.js/tree/canary/packages/create-next-app).
+# Application name
 
-## Getting Started
+OpenTable
 
-First, run the development server:
+## Overview
 
-```bash
-npm run dev
-# or
-yarn dev
-```
+### Application walkthrough
 
-Open [http://localhost:3000](http://localhost:3000) with your browser to see the result.
+Main page:
 
-You can start editing the page by modifying `app/page.tsx`. The page auto-updates as you edit the file.
+- a header section with sign in/up functionalities. Password required to be strong: capital and small letters, numbers and special characters are required.
+- a search section: The search is case insensitive.
+- a results section which renders a selection of restaurants from the external database
 
-[API routes](https://nextjs.org/docs/api-routes/introduction) can be accessed on [http://localhost:3000/api/hello](http://localhost:3000/api/hello). This endpoint can be edited in `pages/api/hello.ts`.
+Search page:
 
-The `pages/api` directory is mapped to `/api/*`. Files in this directory are treated as [API routes](https://nextjs.org/docs/api-routes/introduction) instead of React pages.
+- shows all restaurants in the city that was searched in the main screen
+- sidebar enables further filtering by region, cuisine and price. With NextJS, query parameters will be added dynamically.
+- every restaurant has a 'View more information' button that links to the restaurant page. With NextJS, this works by revising the endpoint with a slug (the restaurant name).
 
-This project uses [`next/font`](https://nextjs.org/docs/basic-features/font-optimization) to automatically optimize and load Inter, a custom Google Font.
+Restaurant page:
 
-## Learn More
+- a header section with name and location of the restaurant
+- a main section with an 'Overview' button which is selected by default. The user can navigate to the menu by using the 'Menu' button.
+- the 'Overview' section also renders a description, a star rating and user reviews.
+- the user can search for availability on the reservation section and make reservations.
 
-To learn more about Next.js, take a look at the following resources:
+Reservation page:
 
-- [Next.js Documentation](https://nextjs.org/docs) - learn about Next.js features and API.
-- [Learn Next.js](https://nextjs.org/learn) - an interactive Next.js tutorial.
+- top section renders reservation details
+- the form requires user input of at least name, phone number and email to enable the 'Complete reservation' button
 
-You can check out [the Next.js GitHub repository](https://github.com/vercel/next.js/) - your feedback and contributions are welcome!
+Notes: limited functionality due to dataset in database
 
-## Deploy on Vercel
+- main page/ search section: results only for cities Ottawa, Niagara and Toronto
+- restaurant page/ reservation section: results only shown for 'Vivaan - fine Indian restaurant'
 
-The easiest way to deploy your Next.js app is to use the [Vercel Platform](https://vercel.com/new?utm_medium=default-template&filter=next.js&utm_source=create-next-app&utm_campaign=create-next-app-readme) from the creators of Next.js.
+## Architecture Overview
 
-Check out our [Next.js deployment documentation](https://nextjs.org/docs/deployment) for more details.
+A React application built with NextJS and TypeScript.
+Middleware to verify JSON webtokens and handle authentication.
+Prisma to communicate with a PostgreSQL database on supabase.com.
+
+### Start Application
+
+To start the application, install packages with `npm install` and then run `npm run dev`.
+The app will be running on http://localhost:3000/.

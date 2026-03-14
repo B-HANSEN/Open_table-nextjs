@@ -21,12 +21,13 @@ const fetchRestaurantMenu = async (slug: string) => {
 export default async function RestaurantMenu({
 	params,
 }: {
-	params: { slug: string };
+	params: Promise<{ slug: string }>;
 }) {
-	const menu = await fetchRestaurantMenu(params.slug);
+	const { slug } = await params;
+	const menu = await fetchRestaurantMenu(slug);
 	return (
 		<div className='bg-white w-[100%] rounded p-3 shadow'>
-			<RestaurantNavbar slug={params.slug} />
+			<RestaurantNavbar slug={slug} />
 			<Menu menu={menu} />
 		</div>
 	);

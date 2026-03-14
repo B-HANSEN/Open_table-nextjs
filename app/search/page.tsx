@@ -57,8 +57,9 @@ const fetchLocations = () => prisma.location.findMany();
 
 const fetchCuisines = () => prisma.cuisine.findMany();
 
-const Search = async ({ searchParams }: { searchParams: SearchParams }) => {
-	const restaurants = await fetchRestaurantByCity(searchParams);
+const Search = async ({ searchParams }: { searchParams: Promise<SearchParams> }) => {
+	const resolvedSearchParams = await searchParams;
+	const restaurants = await fetchRestaurantByCity(resolvedSearchParams);
 	const locations = await fetchLocations();
 	const cuisines = await fetchCuisines();
 
@@ -69,7 +70,7 @@ const Search = async ({ searchParams }: { searchParams: SearchParams }) => {
 				<SearchSidebar
 					locations={locations}
 					cuisines={cuisines}
-					searchParams={searchParams}
+					searchParams={resolvedSearchParams}
 				/>
 				<div className='w-5/6'>
 					{restaurants.length ? (

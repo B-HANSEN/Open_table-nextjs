@@ -19,10 +19,12 @@ export default async function Reserve({
 	params,
 	searchParams,
 }: {
-	params: { slug: string };
-	searchParams: { date: string; partySize: string };
+	params: Promise<{ slug: string }>;
+	searchParams: Promise<{ date: string; partySize: string }>;
 }) {
-	const restaurant = await fetchRestaurantBySlug(params.slug);
+	const { slug } = await params;
+	const { date, partySize } = await searchParams;
+	const restaurant = await fetchRestaurantBySlug(slug);
 
 	return (
 		<div className='border-t h-screen'>
@@ -30,13 +32,13 @@ export default async function Reserve({
 				<Header
 					image={restaurant.main_image}
 					name={restaurant.name}
-					date={searchParams.date}
-					partySize={searchParams.partySize}
+					date={date}
+					partySize={partySize}
 				/>
 				<Form
-					slug={params.slug}
-					date={searchParams.date}
-					partySize={searchParams.partySize}
+					slug={slug}
+					date={date}
+					partySize={partySize}
 				/>
 			</div>
 		</div>

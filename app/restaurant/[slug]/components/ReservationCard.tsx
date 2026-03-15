@@ -68,11 +68,11 @@ export default function ReservationCard({
         <h4 className="text-lg mr-7">Make a Reservation</h4>
       </div>
       <div className="flex flex-col my-3">
-        <label htmlFor="">Party size</label>
+        <label htmlFor="party-size">Party size</label>
         <select
-          name=""
+          name="partySize"
           className="py-3 font-light border-b"
-          id=""
+          id="party-size"
           value={partySize}
           onChange={(e) => setPartySize(e.target.value)}
         >
@@ -85,20 +85,21 @@ export default function ReservationCard({
       </div>
       <div className="flex justify-between]">
         <div className="flex flex-col w-[48%]">
-          <label htmlFor="">Date</label>
+          <label htmlFor="reservation-date">Date</label>
           <DatePicker
             selected={selectedDate}
             onChange={handleChangeDate}
-            className="w-24 py-3 font-light border-b text-reg h-14" // import specific css into layout file to get proper format
+            className="w-24 py-3 font-light border-b text-reg h-14"
             dateFormat="MMMM d"
             wrapperClassName="w-[48%]"
+            id="reservation-date"
           />
         </div>
         <div className="flex flex-col w-[48%]">
-          <label htmlFor="">Time</label>
+          <label htmlFor="reservation-time">Time</label>
           <select
-            name=""
-            id=""
+            name="time"
+            id="reservation-time"
             className="py-3 font-light border-b h-14"
             value={time}
             onChange={(e) => setTime(e.target.value)}

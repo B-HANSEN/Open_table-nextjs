@@ -1,3 +1,4 @@
+import Image from 'next/image';
 import Link from 'next/link';
 import { RestaurantCardType } from '../page';
 import Price from './Price';
@@ -11,9 +12,9 @@ export default function RestaurantCard({ restaurant }: Props) {
   return (
     <div className="w-64 m-3 overflow-hidden border rounded cursor-pointer h-72">
       <Link href={`/restaurant/${restaurant.slug}`}>
-        {/* TODO: run accessibility check (WCAG AA compliant) */}
-        {/* TODO: use Next Image */}
-        <img src={restaurant.main_image} alt="" className="w-full h-36" />
+        <div className="relative w-full h-36">
+          <Image src={restaurant.main_image} alt={restaurant.name} fill sizes="(max-width: 640px) calc(100vw - 1.5rem), 256px" className="object-cover" />
+        </div>
         <div className="p-1">
           <h3 className="mb-2 text-2xl font-bold">{restaurant.name}</h3>
           <div className="flex items-start">

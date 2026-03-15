@@ -1,3 +1,5 @@
+import Image from 'next/image';
+
 export default function Images({ images }: { images: string[] }) {
 	return (
 		<div>
@@ -6,7 +8,9 @@ export default function Images({ images }: { images: string[] }) {
 			</h1>
 			<div className='flex flex-wrap'>
 				{images.map((image, index) => (
-					<img className='w-56 h-44 mr-1 mb-1' src={image} alt='' key={index} />
+					<div className='relative w-56 h-44 mr-1 mb-1' key={index}>
+					<Image src={image} alt='' fill sizes="(max-width: 640px) calc(50vw - 8px), (max-width: 1024px) calc(33vw - 8px), 224px" className='object-cover' />
+				</div>
 				))}
 			</div>
 		</div>

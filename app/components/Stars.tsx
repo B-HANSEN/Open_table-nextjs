@@ -29,7 +29,14 @@ const Stars = ({ rating, reviews }: { rating?: number; reviews: Review[] }) => {
 			<Image src={star} alt='' className='w-4 h-4 mr-1' key={index} />
 		));
 	};
-	return <div className='flex items-center'>{renderStars()}</div>;
+	return (
+		<div
+			className='flex items-center'
+			role='img'
+			aria-label={`Rating: ${reviewRating.toFixed(1)} out of 5 stars`}>
+			{renderStars()}
+		</div>
+	);
 };
 
 export default Stars;

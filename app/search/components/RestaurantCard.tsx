@@ -1,4 +1,5 @@
 import { Cuisine, Location, PRICE, Review } from '@prisma/client';
+import Image from 'next/image';
 import Link from 'next/link';
 import { calculateReviewRatingAverage } from '../../../utils/calculateReviewRatingAverage';
 import Price from '../../components/Price';
@@ -27,7 +28,9 @@ const RestaurantCard = ({ item }: { item: Restaurant }) => {
 
 	return (
 		<div className='border-b flex pb-5 ml-4'>
-			<img src={item.main_image} alt='' className='w-44 h-32 rounded' />
+			<div className='relative w-44 h-32 shrink-0'>
+				<Image src={item.main_image} alt={item.name} fill sizes="(max-width: 640px) 30vw, 176px" className='rounded object-cover' />
+			</div>
 			<div className='pl-5'>
 				<h2 className='text-3xl'>{item.name}</h2>
 				<div className='flex items-start'>
@@ -44,7 +47,7 @@ const RestaurantCard = ({ item }: { item: Restaurant }) => {
 					</div>
 				</div>
 				<div className='text-red-600'>
-					<Link href={`/restaurant/${item.slug}`}>View more information</Link>
+					<Link href={`/restaurant/${item.slug}`} className='hover:underline'>View more information</Link>
 				</div>
 			</div>
 		</div>

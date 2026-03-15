@@ -1,5 +1,4 @@
 import { PrismaClient, Table } from '@prisma/client';
-import { NextApiResponse } from 'next';
 import { times } from '../../data';
 
 const prisma = new PrismaClient();
@@ -7,12 +6,10 @@ const prisma = new PrismaClient();
 export const findAvailableTables = async ({
 	time,
 	day,
-	res,
 	restaurant,
 }: {
 	time: string;
 	day: string;
-	res: NextApiResponse;
 	restaurant: {
 		tables: Table[];
 		open_time: string;
@@ -25,9 +22,7 @@ export const findAvailableTables = async ({
 	})?.searchTimes;
 
 	if (!searchTimes) {
-		return res.status(400).json({
-			errorMessage: 'Invalid data provided.',
-		});
+		return null;
 	}
 
 	// find bookings in database:

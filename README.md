@@ -38,6 +38,10 @@ A React 19 application built with Next.js 16 and TypeScript.
 Middleware to verify JWTs and handle authentication.
 Prisma to communicate with a PostgreSQL database on supabase.com.
 
+### Live Demo
+
+The app is hosted on Vercel: https://open-table-nextjs-ruby.vercel.app/
+
 ### Start Application
 
 To start the application, install packages with `npm install` and then run `npm run dev`.

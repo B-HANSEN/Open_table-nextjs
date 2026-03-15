@@ -38,3 +38,6 @@ db_opentable.backup
 # typescript
 *.tsbuildinfo
 next-env.d.ts
+
+# local notes
+TODO.md

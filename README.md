@@ -1,6 +1,4 @@
-# Application name
-
-OpenTable
+# OpenTable
 
 ## Overview
 
@@ -16,7 +14,7 @@ Search page:
 
 - shows all restaurants in the city that was searched in the main screen
 - sidebar enables further filtering by region, cuisine and price. With NextJS, query parameters will be added dynamically.
-- every restaurant has a 'View more information' button that links to the restaurant page. With NextJS, this works by revising the endpoint with a slug (the restaurant name).
+- every restaurant has a 'View more information' button that links to the restaurant page. With NextJS, this works by navigating to a dynamic route using the restaurant's URL slug.
 
 Restaurant page:
 
@@ -33,21 +31,14 @@ Reservation page:
 Notes: limited functionality due to dataset in database
 
 - main page/ search section: results only for cities Ottawa, Niagara and Toronto
-- restaurant page/ reservation section: results only shown for 'Vivaan - fine Indian restaurant'
 
 ## Architecture Overview
 
-A React application built with NextJS and TypeScript.
-Middleware to verify JSON webtokens and handle authentication.
+A React 19 application built with Next.js 16 and TypeScript.
+Middleware to verify JWTs and handle authentication.
 Prisma to communicate with a PostgreSQL database on supabase.com.
 
 ### Start Application
 
 To start the application, install packages with `npm install` and then run `npm run dev`.
 The app will be running on http://localhost:3000/.
-
-### Pending bug
-
-In the restaurant card, the reservation is made correctly in the database when saved.
-When new reservations to be made, the time slot always shows available even when the seat capacity might be consumed.
-Work-around: show non-available capacities by adding 30mins to the 'Time' drop-down menu.

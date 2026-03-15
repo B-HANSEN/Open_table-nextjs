@@ -85,14 +85,16 @@ const AuthModal = ({ isSignin }: { isSignin: boolean }) => {
 					'bg-blue-400 text-white',
 					''
 				)} border p-1 px-4 rounded mr-3`}
-				onClick={handleOpen}>
+				onClick={handleOpen}
+			>
 				{renderContent('Sign in', 'Sign up')}
 			</button>
 			<Modal
-				open={open}
-				onClose={handleClose}
+				aria-describedby='modal-modal-description'
 				aria-labelledby='modal-modal-title'
-				aria-describedby='modal-modal-description'>
+				onClose={handleClose}
+				open={open}
+			>
 				<Box sx={style}>
 					{loading ? (
 						<div className='py-24 h-[600px] flex justify-center'>
@@ -101,7 +103,7 @@ const AuthModal = ({ isSignin }: { isSignin: boolean }) => {
 					) : (
 						<div className='p-2 h-[600px]'>
 							{error && (
-								<Alert severity='error' className='mb-4'>
+								<Alert className='mb-4' severity='error'>
 									{error}
 								</Alert>
 							)}
@@ -118,14 +120,15 @@ const AuthModal = ({ isSignin }: { isSignin: boolean }) => {
 									)}
 								</h2>
 								<AuthModalInput
-									inputs={inputs}
 									handleChangeInput={handleChangeInput}
+									inputs={inputs}
 									isSignin={isSignin}
 								/>
 								<button
 									className='uppercase bg-red-600 w-full text-white p-3 rounded text-sm mb-5 disabled:bg-gray-400'
 									disabled={disabled}
-									onClick={handleClick}>
+									onClick={handleClick}
+								>
 									{renderContent('Sign in', 'Create account')}
 								</button>
 							</div>

@@ -30,16 +30,12 @@ export default async function Reserve({
 		<div className='border-t h-screen'>
 			<div className='py-9 w-3/5 m-auto'>
 				<Header
+					date={date}
 					image={restaurant.main_image}
 					name={restaurant.name}
-					date={date}
 					partySize={partySize}
 				/>
-				<Form
-					slug={slug}
-					date={date}
-					partySize={partySize}
-				/>
+				<Form date={date} partySize={partySize} slug={slug} />
 			</div>
 		</div>
 	);

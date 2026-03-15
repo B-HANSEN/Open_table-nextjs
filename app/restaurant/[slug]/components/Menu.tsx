@@ -10,7 +10,7 @@ export default function Menu({ menu }: { menu: Item[] }) {
 				</div>
 				<div className='flex flex-wrap justify-between'>
 					{menu.length ? (
-						menu.map(item => <MenuCard key={item.id} item={item} />)
+						menu.map((item) => <MenuCard key={item.id} item={item} />)
 					) : (
 						<div className='flex flex-wrap justify-between'>
 							<p>This restaurant does not have a menu.</p>

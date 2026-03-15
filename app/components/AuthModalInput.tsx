@@ -19,67 +19,67 @@ const AuthModalInput = ({ inputs, handleChangeInput, isSignin }: Props) => {
 			{isSignin ? null : (
 				<div className='my-3 flex justify-between text-sm'>
 					<input
-						type='text'
-						className='border rounded p-2 py-3 w-[49%]'
-						placeholder='First name'
 						aria-label='First name'
-						value={inputs.firstName}
-						onChange={handleChangeInput}
+						className='border rounded p-2 py-3 w-[49%]'
 						name='firstName'
+						onChange={handleChangeInput}
+						placeholder='First name'
+						type='text'
+						value={inputs.firstName}
 					/>
 					<input
-						type='text'
-						className='border rounded p-2 py-3 w-[49%]'
-						placeholder='Last name'
 						aria-label='Last name'
-						value={inputs.lastName}
-						onChange={handleChangeInput}
+						className='border rounded p-2 py-3 w-[49%]'
 						name='lastName'
+						onChange={handleChangeInput}
+						placeholder='Last name'
+						type='text'
+						value={inputs.lastName}
 					/>
 				</div>
 			)}
 			<div className='my-3 flex justify-between text-sm'>
 				<input
-					type='email'
-					className='border rounded p-2 py-3 w-full'
-					placeholder='Email'
 					aria-label='Email'
-					value={inputs.email}
-					onChange={handleChangeInput}
+					className='border rounded p-2 py-3 w-full'
 					name='email'
+					onChange={handleChangeInput}
+					placeholder='Email'
+					type='email'
+					value={inputs.email}
 				/>
 			</div>
 			{isSignin ? null : (
 				<div className='my-3 flex justify-between text-sm'>
 					<input
-						type='text'
-						className='border rounded p-2 py-3 w-[49%]'
-						placeholder='Phone'
 						aria-label='Phone'
-						value={inputs.phone}
-						onChange={handleChangeInput}
+						className='border rounded p-2 py-3 w-[49%]'
 						name='phone'
+						onChange={handleChangeInput}
+						placeholder='Phone'
+						type='text'
+						value={inputs.phone}
 					/>
 					<input
-						type='text'
-						className='border rounded p-2 py-3 w-[49%]'
-						placeholder='City'
 						aria-label='City'
-						value={inputs.city}
-						onChange={handleChangeInput}
+						className='border rounded p-2 py-3 w-[49%]'
 						name='city'
+						onChange={handleChangeInput}
+						placeholder='City'
+						type='text'
+						value={inputs.city}
 					/>
 				</div>
 			)}
 			<div className='my-3 flex justify-between text-sm'>
 				<input
-					type='password'
-					className='border rounded p-2 py-3 w-full'
-					placeholder='Password'
 					aria-label='Password'
-					value={inputs.password}
-					onChange={handleChangeInput}
+					className='border rounded p-2 py-3 w-full'
 					name='password'
+					onChange={handleChangeInput}
+					placeholder='Password'
+					type='password'
+					value={inputs.password}
 				/>
 			</div>
 		</>

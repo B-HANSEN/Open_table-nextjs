@@ -50,7 +50,7 @@ export default async function handler(
 
 		// for each searchTime, add up table capacity:
 		const availabilities = searchTimesWithTables
-			.map(t => {
+			.map((t) => {
 				const sumSeats = t.tables.reduce((sum, table) => {
 					return sum + table.seats;
 				}, 0);
@@ -60,7 +60,7 @@ export default async function handler(
 					available: sumSeats >= parseInt(partySize), // return available status
 				};
 			})
-			.filter(availability => {
+			.filter((availability) => {
 				// filter by restaurant time window
 				const timeIsAfterOpeningHour =
 					new Date(`${day}T${availability.time}`) >=

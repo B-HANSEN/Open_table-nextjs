@@ -22,12 +22,9 @@ export default function useAvailabilities() {
 		setLoading(true);
 
 		try {
-			const response = await axios.get(
-				`/api/restaurant/${slug}/availability`,
-				{
-					params: { day, time, partySize },
-				}
-			);
+			const response = await axios.get(`/api/restaurant/${slug}/availability`, {
+				params: { day, time, partySize },
+			});
 			setData(response.data);
 		} catch (error: any) {
 			setError(error.response?.data?.errorMessage ?? 'Something went wrong.');

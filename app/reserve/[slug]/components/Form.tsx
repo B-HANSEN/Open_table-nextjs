@@ -70,57 +70,58 @@ export default function Form({
 				<>
 					<div className='mt-10 flex flex-wrap justify-between w-[660px]'>
 						<input
-							type='text'
 							className='border rounded p-3 w-80 mb-4'
-							placeholder='First name'
 							name='bookerFirstName'
+							onChange={handleChangeInput}
+							placeholder='First name'
+							type='text'
 							value={input.bookerFirstName}
-							onChange={handleChangeInput}
 						/>
 						<input
-							type='text'
 							className='border rounded p-3 w-80 mb-4'
-							placeholder='Last name'
 							name='bookerLastName'
+							onChange={handleChangeInput}
+							placeholder='Last name'
+							type='text'
 							value={input.bookerLastName}
-							onChange={handleChangeInput}
 						/>
 						<input
-							type='text'
 							className='border rounded p-3 w-80 mb-4'
-							placeholder='Phone number'
 							name='bookerPhone'
+							onChange={handleChangeInput}
+							placeholder='Phone number'
+							type='text'
 							value={input.bookerPhone}
-							onChange={handleChangeInput}
 						/>
 						<input
-							type='text'
 							className='border rounded p-3 w-80 mb-4'
-							placeholder='Email'
 							name='bookerEmail'
+							onChange={handleChangeInput}
+							placeholder='Email'
+							type='text'
 							value={input.bookerEmail}
-							onChange={handleChangeInput}
 						/>
 						<input
-							type='text'
 							className='border rounded p-3 w-80 mb-4'
-							placeholder='Occasion (optional)'
 							name='bookerOccasion'
-							value={input.bookerOccasion}
 							onChange={handleChangeInput}
+							placeholder='Occasion (optional)'
+							type='text'
+							value={input.bookerOccasion}
 						/>
 						<input
-							type='text'
 							className='border rounded p-3 w-80 mb-4'
-							placeholder='Requests (optional)'
 							name='bookerRequest'
-							value={input.bookerRequest}
 							onChange={handleChangeInput}
+							placeholder='Requests (optional)'
+							type='text'
+							value={input.bookerRequest}
 						/>
 						<button
-							disabled={disabled || loading}
 							className='bg-red-600 w-full p-3 text-white font-bold rounded disabled:bg-gray-300'
-							onClick={handleClick}>
+							disabled={disabled || loading}
+							onClick={handleClick}
+						>
 							{loading ? (
 								<CircularProgress color='inherit' />
 							) : (

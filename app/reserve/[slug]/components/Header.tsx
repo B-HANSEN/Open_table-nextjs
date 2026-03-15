@@ -23,8 +23,14 @@ export default function Header({
 			<h3 className='font-bold'>You're almost done!</h3>
 			<div className='mt-5 flex'>
 				<div className='relative w-32 h-20 shrink-0'>
-				<Image src={image} alt={name} fill sizes="128px" className='rounded object-cover' />
-			</div>
+					<Image
+						alt={name}
+						className='rounded object-cover'
+						fill
+						sizes='128px'
+						src={image}
+					/>
+				</div>
 				<div className='ml-4'>
 					<h1 className='text-3xl font-bold'>{name}</h1>
 					<div className='flex mt-3'>

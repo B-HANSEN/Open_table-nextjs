@@ -92,7 +92,8 @@ export default function AuthContext({
 			value={{
 				...authState,
 				setAuthState,
-			}}>
+			}}
+		>
 			{children}
 		</AuthenticationContext.Provider>
 	);

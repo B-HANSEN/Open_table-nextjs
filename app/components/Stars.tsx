@@ -17,7 +17,8 @@ const Stars = ({ rating, reviews }: { rating?: number; reviews: Review[] }) => {
 
 		for (let i = 0; i < 5; i++) {
 			const difference = parseFloat((reviewRating - i).toFixed(1));
-			if (difference >= 1) stars.push(fullStar); // greater than 1
+			if (difference >= 1)
+				stars.push(fullStar); // greater than 1
 			else if (difference < 1 && difference > 0) {
 				// between 0-1 excluding
 				if (difference <= 0.2) stars.push(emptyStar);
@@ -26,14 +27,15 @@ const Stars = ({ rating, reviews }: { rating?: number; reviews: Review[] }) => {
 			} else stars.push(emptyStar); // if 0
 		}
 		return stars.map((star, index) => (
-			<Image src={star} alt='' className='w-4 h-4 mr-1' key={index} />
+			<Image key={index} alt='' className='w-4 h-4 mr-1' src={star} />
 		));
 	};
 	return (
 		<div
+			aria-label={`Rating: ${reviewRating.toFixed(1)} out of 5 stars`}
 			className='flex items-center'
 			role='img'
-			aria-label={`Rating: ${reviewRating.toFixed(1)} out of 5 stars`}>
+		>
 			{renderStars()}
 		</div>
 	);

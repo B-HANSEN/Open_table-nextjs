@@ -8,9 +8,15 @@ export default function Images({ images }: { images: string[] }) {
 			</h1>
 			<div className='flex flex-wrap'>
 				{images.map((image, index) => (
-					<div className='relative w-56 h-44 mr-1 mb-1' key={index}>
-					<Image src={image} alt='' fill sizes="(max-width: 640px) calc(50vw - 8px), (max-width: 1024px) calc(33vw - 8px), 224px" className='object-cover' />
-				</div>
+					<div key={index} className='relative w-56 h-44 mr-1 mb-1'>
+						<Image
+							alt=''
+							className='object-cover'
+							fill
+							sizes='(max-width: 640px) calc(50vw - 8px), (max-width: 1024px) calc(33vw - 8px), 224px'
+							src={image}
+						/>
+					</div>
 				))}
 			</div>
 		</div>

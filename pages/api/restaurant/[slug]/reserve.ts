@@ -58,7 +58,7 @@ export default async function handler(
 			});
 		}
 
-		const searchTimeWithTables = searchTimesWithTables.find(t => {
+		const searchTimeWithTables = searchTimesWithTables.find((t) => {
 			return t.date.toISOString() === new Date(`${day}T${time}`).toISOString(); // unify date formats to avoid inconsistencies when comparing
 		});
 
@@ -76,7 +76,7 @@ export default async function handler(
 			4: [],
 		};
 
-		searchTimeWithTables.tables.forEach(table => {
+		searchTimeWithTables.tables.forEach((table) => {
 			if (table.seats === 2) {
 				tablesCount[2].push(table.id);
 			} else {
@@ -130,7 +130,7 @@ export default async function handler(
 			},
 		});
 
-		const bookingsOnTablesData = tablesToBook.map(table_id => {
+		const bookingsOnTablesData = tablesToBook.map((table_id) => {
 			return {
 				table_id,
 				booking_id: booking.id,

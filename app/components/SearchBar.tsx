@@ -17,21 +17,20 @@ export default function SearchBar() {
 	return (
 		<form
 			className='text-left text-lg py-3 m-auto flex justify-center'
-			onSubmit={handleSubmit}>
-			<label htmlFor='location-search' className='sr-only'>
+			onSubmit={handleSubmit}
+		>
+			<label className='sr-only' htmlFor='location-search'>
 				Search by state, city or town
 			</label>
 			<input
-				id='location-search'
 				className='rounded mr-3 p-3 w-[450px] bg-white text-gray-900 placeholder:text-gray-500 shadow-lg focus:outline-none focus:ring-2 focus:ring-offset-2 focus:ring-white'
-				type='text'
+				id='location-search'
+				onChange={(e) => setLocation(e.target.value)}
 				placeholder='State, city or town'
+				type='text'
 				value={location}
-				onChange={e => setLocation(e.target.value)}
 			/>
-			<button
-				type='submit'
-				className='rounded bg-red-600 px-9 py-2 text-white'>
+			<button className='rounded bg-red-600 px-9 py-2 text-white' type='submit'>
 				Let's go
 			</button>
 		</form>

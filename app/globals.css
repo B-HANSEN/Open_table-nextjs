@@ -1,6 +1,31 @@
-@tailwind base;
-@tailwind components;
-@tailwind utilities;
+@import "tailwindcss";
+
+@theme {
+	--font-size-2xsm: 10px;
+	--font-size-xsm: 12px;
+	--font-size-reg: 15px;
+	--font-size-lg: 18px;
+	--font-size-2xl: 22px;
+	--font-size-3xl: 25px;
+	--font-size-4xl: 32px;
+	--font-size-5xl: 40px;
+	--font-size-6xl: 50px;
+	--font-size-7xl: 70px;
+}
+
+@layer base {
+	* {
+		box-sizing: border-box;
+		padding: 0;
+		margin: 0;
+	}
+	/* Restore v3 default border color (was gray-200, v4 defaults to currentColor) */
+	*,
+	::before,
+	::after {
+		border-color: var(--color-gray-200);
+	}
+}
 
 :root {
 	--max-width: 1100px;
@@ -75,12 +100,6 @@
 		--card-rgb: 100, 100, 100;
 		--card-border-rgb: 200, 200, 200;
 	}
-}
-
-* {
-	box-sizing: border-box;
-	padding: 0;
-	margin: 0;
 }
 
 html,

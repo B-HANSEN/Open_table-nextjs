@@ -1304,21 +1304,19 @@ export default async function handler(
 		],
 	});
 
+	const allRestaurantIds = [
+		vivaanId, RamaKrishnaId, coconutLagoonId, lastTrainToDelhiId,
+		adrakYorkvilleId, curryishTavernId, utsavId, pukkaId,
+		kamasutraIndianId, eldoradoTacoId, laBartolaId, elCatrinId,
+		mariachisId, canoRestaurantId, bluRistoranteId, stelvioId, sofiaId,
+	];
+
 	await prisma.table.createMany({
-		data: [
-			{
-				restaurant_id: vivaanId,
-				seats: 4,
-			},
-			{
-				restaurant_id: vivaanId,
-				seats: 4,
-			},
-			{
-				restaurant_id: vivaanId,
-				seats: 2,
-			},
-		],
+		data: allRestaurantIds.flatMap(id => [
+			{ restaurant_id: id, seats: 4 },
+			{ restaurant_id: id, seats: 4 },
+			{ restaurant_id: id, seats: 2 },
+		]),
 	});
 
 	res.status(200).json({ name: 'hello' });

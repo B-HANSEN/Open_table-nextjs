@@ -7,25 +7,29 @@ export default function SearchBar() {
 	const router = useRouter();
 	const [location, setLocation] = useState('');
 
+	const handleSubmit = (e: React.FormEvent) => {
+		e.preventDefault();
+		if (location === '') return;
+		router.push(`/search/?city=${location}`);
+		setLocation('');
+	};
+
 	return (
-		<div className='text-left text-lg py-3 m-auto flex justify-center'>
+		<form
+			className='text-left text-lg py-3 m-auto flex justify-center'
+			onSubmit={handleSubmit}>
 			<input
-				className='rounded  mr-3 p-2 w-[450px]'
+				className='rounded mr-3 p-3 w-[450px] bg-white text-gray-900 placeholder:text-gray-500 shadow-lg focus:outline-none focus:ring-2 focus:ring-white'
 				type='text'
 				placeholder='State, city or town'
 				value={location}
 				onChange={e => setLocation(e.target.value)}
 			/>
 			<button
-				className='rounded bg-red-600 px-9 py-2 text-white'
-				onClick={() => {
-					// programmatic navigation
-					if (location === '') return;
-					router.push(`/search/?city=${location}`);
-					setLocation('');
-				}}>
+				type='submit'
+				className='rounded bg-red-600 px-9 py-2 text-white'>
 				Let's go
 			</button>
-		</div>
+		</form>
 	);
 }

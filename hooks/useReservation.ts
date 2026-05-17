@@ -34,8 +34,7 @@ export default function useReservation() {
 
 		try {
 			const response = await axios.post(
-				// instead of http://localhost:3000/api/restaurant/${slug}/reserve?day=${day}&time=${time}&partySize=${partySize}
-				`http://localhost:3000/api/restaurant/${slug}/reserve`,
+				`/api/restaurant/${slug}/reserve`,
 				{
 					bookerFirstName,
 					bookerLastName,
